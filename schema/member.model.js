@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { mb_type_enums, mb_status_enums } = require('../lib/config');
+const { mb_type_enums, mb_status_enums, ordenary_enums } = require('../lib/config');
 
 const memberSchema = new mongoose.Schema({
   mb_nick: {
@@ -20,7 +20,7 @@ const memberSchema = new mongoose.Schema({
     type: String,
     required: false,
     default: 'USER', //qiymati default USER bo'ladi
-    enum:{
+    enum: {
       values: mb_type_enums, //shu qiymatlarnigina qabul qiladi
       message: "{VALUE} is not among permitted values" //agar shu qiymatlar bo'lmasa shu messgae chiqadi
     }
@@ -29,13 +29,13 @@ const memberSchema = new mongoose.Schema({
     type: String,
     required: false,
     default: 'ACTIVE', //qiymati default USER bo'ladi
-    enum:{
+    enum: {
       values: mb_status_enums, //shu qiymatlarnigina qabul qiladi
       message: "{VALUE} is not among permitted values" //agar shu qiymatlar bo'lmasa shu messgae chiqadi
     }
   },
 
-  mb_full_name: {
+  mb_description: {
     type: String,
     required: false
   },
@@ -52,7 +52,39 @@ const memberSchema = new mongoose.Schema({
     required: false,
     default: 0,
   },
-
+  mb_top: {
+    type: String,
+    required: false,
+    default: 'N',
+    enum: {
+      values: ordenary_enums,
+      message: "{VALUE} is not among permitted values"
+    }
+  },
+  mb_views: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  mb_likes: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  mb_following_cnt: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  mb_follower_cnt: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  timestamps: {
+    createdAt: 'created_at', // Use `created_at` to store the created date
+    updatedAt: 'updated_at' // and `updated_at` to store the last updated date
+  }
 });
 
 module.exports = mongoose.model('Member', memberSchema); //Memberni avtomatik Membersga aylantiradi
