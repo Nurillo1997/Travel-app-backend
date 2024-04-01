@@ -3,12 +3,6 @@ const express = require("express");
 const app = express();
 const router = require("./router.js");
 
-// MongoDB chaqirish
-//server moduleni objecti bolgan db ni export qildik
-const db = require("./server").db();
-
-const mongodb = require("mongodb");
-// let user;
 
 //1: kirish codelari
 //Express middleware
