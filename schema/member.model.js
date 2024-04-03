@@ -81,10 +81,8 @@ const memberSchema = new mongoose.Schema({
     required: false,
     default: 0,
   },
-  timestamps: {
-    createdAt: 'created_at', // Use `created_at` to store the created date
-    updatedAt: 'updated_at' // and `updated_at` to store the last updated date
-  }
-});
+  
+},
+{timestamps: true});
 
 module.exports = mongoose.model('Member', memberSchema); //Memberni avtomatik Membersga aylantiradi

@@ -17,6 +17,8 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 //4:Routing code
-app.use("/", router);
+// app.use("/agency", router_bssr); //ejs traditional
+app.use("/", router); // React, REST API
+
 
 module.exports = app;
